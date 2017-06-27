@@ -26,3 +26,8 @@ $(document).ready(function() {
 		}
 		});
 })
+
+$( "#logOut" ).click(function() {
+  $.cookie("stevan","");
+  location.reload();
+});

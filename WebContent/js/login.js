@@ -16,12 +16,17 @@ $(document).on('submit', '#register-form', function(e) {
 			var d = JSON.parse(data);
 			$.cookie("stevan", d.id,{expires: new Date(2017,10,29,11,00,00)});
 			console.log(getCookie("stevan"));
-			window.location.replace("http://localhost:7653/rs.ftn.mr.webforum/home.html");
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert("AJAX ERROR: " + errorThrown + XMLHttpRequest);
 		}
 	});
+});
+
+$(document).ready(function() {
+	if($.cookie("stevan") != null && $.cookie("stevan") != undefined && $.cookie("stevan") != ""){
+		window.location.replace("http://localhost:8080/ms.forum/home.html");		
+	}
 });
 
 function loginformToJSON(username,password) {

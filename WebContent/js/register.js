@@ -25,7 +25,11 @@ $(document).on('submit', '#register-form', function(e) {
 	});
 });
 
-
+$(document).ready(function() {
+	if($.cookie("stevan") != null && $.cookie("stevan") != undefined && $.cookie("stevan") != ""){
+		window.location.replace("http://localhost:8080/ms.forum/home.html");		
+	}
+});
 
 function registerformToJSON(username,ime,prezime,email,password,telefon) {
 	return JSON.stringify({

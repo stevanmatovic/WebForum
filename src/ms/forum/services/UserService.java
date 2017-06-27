@@ -6,6 +6,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import ms.forum.dao.UserDao;
 import ms.forum.model.User;
 
 @Path("/users")
@@ -18,6 +19,8 @@ public class UserService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String add(User user) {	
 		
+		UserDao dao = new UserDao();
+		dao.insert(user);
 		return "OK";
 	}
 	

@@ -33,6 +33,24 @@ public class CookieDao {
 		}	
 	}	
 	
+	public void delete(String cookieId){
+		String sql = "DELETE FROM COOKIE WHERE id=?";
+		PreparedStatement p = null;
+		try{
+			p = DataBaseConnection.getConnection().prepareStatement(sql);
+			p.setString(1, cookieId);
+			
+			p.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DataBaseUtils.close(p);
+		}	
+		
+	}
+	
 	public int getUserIdByCookie(String id){
 		
 		String sql = "select * from COOKIE where id=?";

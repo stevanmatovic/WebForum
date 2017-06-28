@@ -2,12 +2,15 @@ package ms.forum.services;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.CookieParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import com.sun.org.apache.bcel.internal.generic.CPInstruction;
 
 import ms.forum.dao.CookieDao;
 import ms.forum.dao.UserDao;
@@ -30,6 +33,15 @@ public class CookieService {
 			return Response.status(200).entity(u).build();
 		else
 			return Response.status(401).build();
+	}
+	
+	@GET
+	@Path("/delete")
+	public void deleteCookie(@CookieParam("stevan") String cookie) {
+
+		CookieDao cookieDao = new CookieDao();
+		cookieDao.delete(cookie);
+		
 	}
 	
 	

@@ -10,9 +10,7 @@ $(document).ready(function() {
 		$( "#logOut" ).hide();
 		$( "#register" ).show();
 	}
-	$("#logOut").on("click",function() {
-		$.cookie("stevan","");
-	});
+	
 	$.ajax({
 		method : 'POST',
 		url : "../ms.forum/rest/cookie/user",
@@ -22,12 +20,29 @@ $(document).ready(function() {
 			$("#loggedAs").text("Logged as " + d.username);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("JADOOOOO");
+			console.log(textStatus);
+			console.log(errorThrown);
 		}
 		});
+	
+	$( "#logOut" ).click(function() {
+		  
+		  $.ajax({
+				method : 'GET',
+				url : "../ms.forum/rest/cookie/delete",
+				contentType : 'application/json',
+				success : function(data) {
+					console.log("success");
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+					
+				});
+		  $.cookie("stevan","");
+		  location.reload();
+		});
+	
 })
 
-$( "#logOut" ).click(function() {
-  $.cookie("stevan","");
-  location.reload();
-});

@@ -2,7 +2,25 @@ $(document).ready(function(){
 	
 	
 	$("#cancel").click(function(){
-		window.location.href = "http://localhost:8080/ms.forum/home.html";
+		window.location.href = "home.html";
+	});
+	
+	$("#logout").click(function() {
+
+		$.ajax({
+			method : 'GET',
+			url : "../ms.forum/rest/cookie/delete",
+			contentType : 'application/json',
+			success : function(data) {
+				console.log("success");
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});
+		$.cookie("stevan", "");
+		window.location.href = "home.html";
 	});
 	
 });
@@ -21,7 +39,7 @@ $(document).on('submit', '#create-subforum-form', function(e) {
 		dataType : "text",
 		data : registerformToJSON(name,rules,description),
 		success : function(data) {
-			window.location.replace("http://localhost:8080/ms.forum/home.html");
+			window.location.href = "home.html";
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert("AJAX ERROR: " + errorThrown + XMLHttpRequest);

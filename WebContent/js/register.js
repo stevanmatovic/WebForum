@@ -17,7 +17,7 @@ $(document).on('submit', '#register-form', function(e) {
 		dataType : "text",
 		data : registerformToJSON(username,name,surname,email,password,phone),
 		success : function(data) {
-			window.location.replace("http://localhost:8080/ms.forum/home.html");
+			window.location.href = "home.html";	
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert("AJAX ERROR: " + errorThrown + XMLHttpRequest);
@@ -27,7 +27,7 @@ $(document).on('submit', '#register-form', function(e) {
 
 $(document).ready(function() {
 	if($.cookie("stevan") != null && $.cookie("stevan") != undefined && $.cookie("stevan") != ""){
-		window.location.replace("http://localhost:8080/ms.forum/home.html");		
+		window.location.href = "home.html";			
 	}
 });
 

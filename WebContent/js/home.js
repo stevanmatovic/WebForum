@@ -34,6 +34,21 @@ $(document).ready(
 				}
 			});
 
+			$.ajax({
+				method : 'POST',
+				url : "../ms.forum/rest/subforum/menu",
+				contentType : 'application/json',
+				success : function(data) {
+					data.forEach(function(element) {
+							$( "#subforums" ).append( '<a class="list-group-item" href="/ms.forum/subforum.html?name=' + element.name +'">' + element.name + "</a>" );
+						});
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+			
 			$("#logOut").click(function() {
 
 				$.ajax({
@@ -53,4 +68,9 @@ $(document).ready(
 				location.reload();
 			});
 
-		})
+			$(".subforumLink").click(function() {
+				alert('kliknuto');
+			});
+			
+})
+

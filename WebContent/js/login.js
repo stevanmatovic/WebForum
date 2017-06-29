@@ -12,7 +12,7 @@ $(document).on('submit', '#register-form', function(e) {
 		dataType : "text",
 		data : loginformToJSON(username,password),
 		success : function(data) {
-			window.location.replace("http://localhost:8080/ms.forum/home.html");
+			window.location.href = "home.html";
 			var d = JSON.parse(data);
 			$.cookie("stevan", d.id,{expires: new Date(2017,10,29,11,00,00)});
 			console.log(getCookie("stevan"));
@@ -25,7 +25,7 @@ $(document).on('submit', '#register-form', function(e) {
 
 $(document).ready(function() {
 	if($.cookie("stevan") != null && $.cookie("stevan") != undefined && $.cookie("stevan") != ""){
-		window.location.replace("http://localhost:8080/ms.forum/home.html");		
+		window.location.href = "home.html";		
 	}
 });
 

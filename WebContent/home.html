@@ -17,6 +17,7 @@
 
 </head>
 <body>
+
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -38,21 +39,26 @@
 					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
 					<li><a href="#">Link</a></li>
 				</ul>
-				
+
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Link</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Dropdown <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#" id ="loggedAs"></a></li>
-							<li><a href="http://localhost:8080/ms.forum/login.html" id ="logIn">Log In</a></li>
-							<li><a href="http://localhost:8080/ms.forum/register.html" id ="register">Register</a></li>
+							<li><a href="#" id="loggedAs"></a></li>
+							<li><a href="http://localhost:8080/ms.forum/login.html"
+								id="logIn">Log In</a></li>
+							<li><a href="http://localhost:8080/ms.forum/register.html"
+								id="register">Register</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="http://localhost:8080/ms.forum/createSubforum.html" id ="createSubforum">Create Subforum</a></li>
+							<li><a
+								href="http://localhost:8080/ms.forum/createSubforum.html"
+								id="createSubforum">Create Subforum</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="http://localhost:8080/ms.forum/home.html" id="logOut">Log Out</a></li>
-							
+							<li><a href="http://localhost:8080/ms.forum/home.html"
+								id="logOut">Log Out</a></li>
+
 						</ul></li>
 				</ul>
 				<form class="navbar-form navbar-right">
@@ -62,9 +68,19 @@
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form>
 			</div>
-			<!-- /.navbar-collapse -->
 		</div>
-		<!-- /.container-fluid -->
 	</nav>
+	
+	<div class="container-fluid">
+		<div class = "row">
+			<div class = "col-xs-2">
+				<h3>Subforums</h3>
+				<div class = "panel panel-default" id="subforums">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
 </body>
 </html>

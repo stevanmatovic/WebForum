@@ -1,5 +1,7 @@
 package ms.forum.services;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.GET;
@@ -13,6 +15,7 @@ import javax.ws.rs.core.Response;
 import ms.forum.dao.CookieDao;
 import ms.forum.dao.SubforumDao;
 import ms.forum.dao.UserDao;
+import ms.forum.model.Post;
 import ms.forum.model.Subforum;
 import ms.forum.model.User;
 
@@ -31,6 +34,19 @@ public class SubforumService {
 		SubforumDao dao = new SubforumDao();
 		dao.insert(subforum);
 		return "OK";
+	}
+	
+	@POST
+	@Path("/getPosts")
+	@Consumes({MediaType.TEXT_PLAIN})
+	@Produces({MediaType.APPLICATION_JSON})
+	public ArrayList<Post> loadPost(String name){
+		
+		ArrayList<Post> list = new ArrayList<>();
+		SubforumDao subforumDao = new SubforumDao();
+		Subforum subforum = subforumDao.getByName(name);
+		list = subforumDao.getListById(subforum.getId());
+		return list;
 	}
 	
 	@POST

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>New Post</title>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="bootstrap/bootstrap1.css">
+
+<link rel="stylesheet" href="bootstrap/bootstrap1.css">
+
+<script type="text/javascript" src="bootstrap/bootstrap3.js"></script>
+
+<script type="text/javascript" src="js/cookie.js"></script>
+
+<link rel="stylesheet" href="css/justified-nav.css">
+
+<script type="text/javascript" src="js/createPost.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		
+		<nav class="navbar navbar-default">
+			<ul class="nav nav-justified">
+				<li id="liPicture"><a href ="#">Picture</a></li>
+				<li id="liText"><a href ="#">Text</a></li>
+				<li id="liLink"><a href ="#">Link</a></li>
+			</ul>
+		</nav>
+		
+		<form id="create-text-post">
+			<div class="form-group">
+				<label for="formGroupExampleInput">Post name</label> <input
+					type="text" class="form-control"
+					placeholder="Name of your post" id="textPostName">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput2">Post text</label>
+				<textarea rows="7" class="form-control"
+					placeholder="Enter text" id="postText"></textarea>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary pull-right btn-lg"
+					id="createTextPost">Create!</button>
+				<button type="button" class="btn pull-right btn-lg" id="cancel">Cancel</button>
+			</div>
+		</form>
+		<form id="create-link-post">
+			<div class="form-group">
+				<label for="formGroupExampleInput">Post name</label> <input
+					type="text" class="form-control"
+					placeholder="Name of your post" id="linkPostName">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput2">Post link</label>
+				<textarea rows="1" class="form-control"
+					placeholder="Enter link" id="postLink"></textarea>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary pull-right btn-lg" id="createLinkPost">Create!</button>
+				<button type="button" class="btn pull-right btn-lg" id="cancel">Cancel</button>
+			</div>
+		</form>
+		<form id="create-picture-post" enctype = "multipart/form-data">
+			<div class="form-group">
+				<label for="formGroupExampleInput">Post name</label> <input
+					type="text" class="form-control"
+					placeholder="Name of your post" id="picturePostName">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput2">Post picture</label>
+				<input type="file" class="form-control" placeholder="Picture" id="pictureLink">
+				<div class="container col-lg-4 col-lg-offset-4">
+        			<div class="row">
+						<img class="img-responsive img-center"  id="picture" src="#" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary pull-right btn-lg" id="createPicturePost">Create!</button>
+				<button type="button" class="btn pull-right btn-lg" id="cancel">Cancel</button>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

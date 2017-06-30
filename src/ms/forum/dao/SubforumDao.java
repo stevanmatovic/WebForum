@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ms.forum.database.DataBaseConnection;
+import ms.forum.model.Post;
 import ms.forum.model.Subforum;
 import ms.forum.model.User;
 import ms.forum.utils.DataBaseUtils;
@@ -118,5 +119,52 @@ public class SubforumDao {
 		s.setModeratorId(resultSet.getInt("main_moderator"));
 
 	}
+	
+
+	protected ArrayList<Post> getPostList(ResultSet rs) throws SQLException {
+		ArrayList<Post> list = new ArrayList();
+ 
+        while (rs.next()) {
+            Post post = new Post();
+            fillPostFromResultSet(post, rs);
+            list.add(post);
+        }
+ 
+        return list;
+    }
+   
+    public ArrayList<Post> getListById(int podforumId) {
+        String sql = "select * from POST where subforum_id = ?";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try {
+            p = DataBaseConnection.getConnection()
+                        .prepareStatement(sql);
+            p.setInt(1, podforumId);
+            rs = p.executeQuery();
+ 
+            return this.getPostList(rs);
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        finally {
+            DataBaseUtils.close(rs, p);
+        }
+        return null;
+    }
+private void fillPostFromResultSet(Post post, ResultSet rs) throws SQLException {
+        post.setId(rs.getInt("id"));
+        post.setAutorId(rs.getInt("author_id"));
+        post.setDate(rs.getDate("date"));
+        post.setLink(rs.getString("content_link"));
+        post.setPicture(rs.getString("content_picture"));
+        post.setSubforumId(rs.getInt("subforum_id"));
+        post.setTekst(rs.getString("content_text"));
+        post.setTitle(rs.getString("title"));
+        post.setType(rs.getString("type"));
+}
 	
 }

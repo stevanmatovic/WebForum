@@ -1,5 +1,26 @@
 $(document).ready(function() {
 	
+	$.ajax({
+		method : 'POST',
+		url : "../ms.forum/rest/subforum/getPosts",
+		contentType : 'text/plain',
+		data: getUrlVars()["name"],
+		success : function(data) {
+			data.forEach(function(element) {
+				$( "#posts" ).append( '<a href="#" class="list-group-item list-group-item-action">'+element.title+'</a>' );
+			});
+			
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			console.log(textStatus);
+			console.log(errorThrown);
+		}
+	});
+	
+	$("#createPost").click(function(){
+		window.location.href = "createPost.html?name="+getUrlVars()["name"];
+	})
+	
 	console.log(getUrlVars()["name"]);
 	if(getUrlVars()["name"] == "" || getUrlVars()["name"] == null || getUrlVars()["name"] == undefined)
 		window.location.href = "home.html";

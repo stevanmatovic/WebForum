@@ -86,13 +86,15 @@ public class SubforumDao {
 
 	public Subforum getByName(String name) {
 		// TODO Auto-generated method stub
-		String sql = "select * from SUBFORUM where name=?";
+		name = name.replaceAll("#", "");
+		int id = Integer.parseInt(name);
+		String sql = "select * from SUBFORUM where id=?";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
 		try {
 			statement = DataBaseConnection.getConnection().prepareStatement(sql);
-			statement.setString(1, name);
+			statement.setInt(1, id);
 			resultSet = statement.executeQuery();
 			Subforum s = new Subforum();
 			if (resultSet.next()) {
@@ -155,7 +157,8 @@ public class SubforumDao {
         }
         return null;
     }
-private void fillPostFromResultSet(Post post, ResultSet rs) throws SQLException {
+    
+    private void fillPostFromResultSet(Post post, ResultSet rs) throws SQLException {
         post.setId(rs.getInt("id"));
         post.setAutorId(rs.getInt("author_id"));
         post.setDate(rs.getDate("date"));
@@ -165,6 +168,34 @@ private void fillPostFromResultSet(Post post, ResultSet rs) throws SQLException 
         post.setTekst(rs.getString("content_text"));
         post.setTitle(rs.getString("title"));
         post.setType(rs.getString("type"));
-}
+    }
 	
+    public List<Subforum> search(String Naslov, String Opis, String moderatorUser) {
+		String sql;			
+		sql = "select f.* from subforum f left join user u on f.main_moderator=u.id where f.name like ? and f.description like ?  and u.username like ?";
+    	PreparedStatement p = null;
+		ResultSet rs = null;
+		try {
+			p = DataBaseConnection.getConnection()
+						.prepareStatement(sql);
+			p.setString(1, "%"+Naslov+"%");
+			p.setString(2, "%"+Opis+"%");
+			p.setString(3, "%"+moderatorUser+"%");
+
+			rs = p.executeQuery();
+
+			return this.processSelectAll(rs);
+		} catch (SQLException e) {
+			System.out.println(e.toString());
+		}
+		catch(Exception e){
+			System.out.println(e.toString());
+		}
+		finally {
+			DataBaseUtils.close(rs, p);
+		}
+    	return null;
+	}
+
+    
 }

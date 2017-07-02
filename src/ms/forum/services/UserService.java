@@ -13,6 +13,7 @@ import ms.forum.dao.CookieDao;
 import ms.forum.dao.UserDao;
 import ms.forum.model.Cookie;
 import ms.forum.model.Credentials;
+import ms.forum.model.SearchParams;
 import ms.forum.model.User;
 
 @Path("/users")
@@ -60,4 +61,20 @@ public class UserService {
 		return response;
 	}
 
+	
+	@POST
+	@Path("/search")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response searchAll(SearchParams json) {	
+		
+		Response response;
+		
+		UserDao userDao = new UserDao();
+	    response = Response.status(200)
+	    		.entity(userDao.searchByName(json.getKorisnik())).build();
+	
+		return response;
+	}
+	
 }

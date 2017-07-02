@@ -31,6 +31,14 @@ $(document).ready(function() {
 	
 	$(document).on('submit','#create-text-post',function(e){
 		
+		e.preventDefault();
+		
+		if ($.cookie("stevan") == null || $.cookie("stevan") == undefined
+				|| $.cookie("stevan") == ""){
+			window.location.assign("home.html")
+			return;
+		}
+		
 		var title = $('#textPostName').val();
 		var text = $('#postText').val();
 		$.ajax({
@@ -42,6 +50,7 @@ $(document).ready(function() {
     		data : textPostToJSON(title,text),
     		success : function(data) {
     			console.log(data);
+    			window.location.href='/ms.forum/subforum.html?name='+getUrlVars()["name"];
     		},
     		error : function(XMLHttpRequest, textStatus, errorThrown) {
     			
@@ -51,6 +60,14 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('submit','#create-link-post',function(e){
+		
+		e.preventDefault();
+		
+		if ($.cookie("stevan") == null || $.cookie("stevan") == undefined
+				|| $.cookie("stevan") == ""){
+			window.location.href = "login.html";
+			return;
+		}
 		
 		var title = $('#linkPostName').val();
 		var link = $('#postLink').val();
@@ -63,6 +80,7 @@ $(document).ready(function() {
     		data : linkPostToJSON(title,link),
     		success : function(data) {
     			console.log(data);
+    			window.location.href='/ms.forum/subforum.html?name='+getUrlVars()["name"];
     		},
     		error : function(XMLHttpRequest, textStatus, errorThrown) {
     			
@@ -74,8 +92,13 @@ $(document).ready(function() {
 	$(document).on('submit','#create-picture-post',function(e){	
 		e.preventDefault();
 		var data = new FormData(this);
-		
 		var file = $('#pictureLink')[0].files[0];
+		
+		if ($.cookie("stevan") == null || $.cookie("stevan") == undefined
+				|| $.cookie("stevan") == ""){
+			window.location.href = "login.html";
+			return;
+		}
 		
 		 $.ajax({
 		        url : "../ms.forum/rest/post/upload",
@@ -99,6 +122,7 @@ $(document).ready(function() {
 		        		data : imagePostToJSON(id),
 		        		success : function(data) {
 		        			console.log(data);
+		        			window.location.href='/ms.forum/subforum.html?name='+getUrlVars()["name"];
 		        		},
 		        		error : function(XMLHttpRequest, textStatus, errorThrown) {
 		        			

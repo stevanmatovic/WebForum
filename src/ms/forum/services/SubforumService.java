@@ -16,6 +16,7 @@ import ms.forum.dao.CookieDao;
 import ms.forum.dao.SubforumDao;
 import ms.forum.dao.UserDao;
 import ms.forum.model.Post;
+import ms.forum.model.SearchParams;
 import ms.forum.model.Subforum;
 import ms.forum.model.User;
 
@@ -56,6 +57,23 @@ public class SubforumService {
 		
 		SubforumDao dao = new SubforumDao();
 		return Response.status(200).entity(dao.getAll()).build();
+	}
+	
+	@POST
+	@Path("/search")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response searchAll(SearchParams json) {	
+		
+		Response response;
+		
+		SubforumDao podforumDao = new SubforumDao();
+	    response = Response.
+	    		status(200)
+	    		.entity(podforumDao.search(json.getNaslov(), json.getOpis(), json.getModerator()))
+	    		.build();
+	
+		return response;
 	}
 	
 	@POST

@@ -6,8 +6,11 @@ $(document).ready(function() {
 		contentType : 'text/plain',
 		data: getUrlVars()["name"],
 		success : function(data) {
-			data.forEach(function(element) {
-				$( "#posts" ).append( '<a href="#" class="list-group-item list-group-item-action">'+element.title+'</a>' );
+			data.forEach(function(element) { 
+				var str = '<a class="list-group-item list-group-item-action"';
+				str+= 'href="post.html?id='+element.id+'">';
+				str+= element.title + '</a>';
+				$("#posts").append(str);
 			});
 			
 		},

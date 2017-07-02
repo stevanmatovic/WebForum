@@ -13,14 +13,12 @@ public class Post {
 	String link;
 	String picture;
 	Date date;
+	int likes;
+	int dislikes;
 	
 
 	public Post() {
 	}
-
-	
-
-
 
 
 	public int getId() {
@@ -42,6 +40,24 @@ public class Post {
 	public String getTitle() {
 		return title;
 	}
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public int getDislikes() {
+		return dislikes;
+	}
+
+
+	public void setDislikes(int dislikes) {
+		this.dislikes = dislikes;
+	}
+
 
 	public void setTitle(String title) {
 		this.title = title;

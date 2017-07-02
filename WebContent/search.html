@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="bootstrap/bootstrap1.css">
+
+<link rel="stylesheet" href="bootstrap/bootstrap1.css">
+
+<script type="text/javascript" src="bootstrap/bootstrap3.js"></script>
+
+<script type="text/javascript" src="js/cookie.js"></script>
+
+<link rel="stylesheet" href="css/justified-nav.css">
+
+<script type="text/javascript" src="js/search.js"></script>
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<ul class="nav nav-justified">
+				<li id="liSubforum"><a href="#" class="nav">Search subforum</a></li>
+				<li id="liPost"><a href="#" class="nav">Search post</a></li>
+				<li id="liUser"><a href="#" class="nav">Search user</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="userSearch" class="container">
+		<form>
+			<div class="form-group">
+				<label for="formGroupExampleInput">Username</label> <input
+					id="korisnik" type="text" class="form-control"
+					id="formGroupExampleInput">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary pull-right" id="searchUser">Search</button>
+			</div>
+		</form>
+		<br /> <br />
+		<div class="container">
+			<div class="row" id="users"></div>
+		</div>
+	</div>
+
+	<div id="postSearch" class="container">
+		<form>
+			<div class="form-group">
+				<label for="formGroupExampleInput">Name</label> <input id="naslov"
+					type="text" class="form-control" id="formGroupExampleInput">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput">Content</label> <input
+					id="sadrzaj" type="text" class="form-control"
+					id="formGroupExampleInput">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput">Author</label> <input id="autor"
+					type="text" class="form-control" id="formGroupExampleInput">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput">Subforum</label> <input
+					id="podforum" type="text" class="form-control"
+					id="formGroupExampleInput">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary pull-right" id="searchPost">Search</button>
+			</div>
+		</form>
+		<br /> <br />
+		<div class="container">
+			<div class="row" id="posts"></div>
+		</div>
+	</div>
+
+	<div id="subforumSearch" class="container">
+		<form>
+			<div class="form-group">
+				<label for="formGroupExampleInput">Name</label> <input id="naslov"
+					type="text" class="form-control" id="formGroupExampleInput">
+			</div>
+
+			<div class="form-group">
+				<label for="formGroupExampleInput">Description</label> <input
+					id="opis" type="text" class="form-control"
+					id="formGroupExampleInput">
+			</div>
+
+			<div class="form-group">
+				<label for="formGroupExampleInput">Moderator</label> <input
+					id="moderator" type="text" class="form-control"
+					id="formGroupExampleInput">
+			</div>
+
+			<div class="form-group">
+				<button class="btn btn-primary pull-right" id="searchSubforum">Search</button>
+			</div>
+		</form>
+		<br /> <br />
+		<div class="container">
+			<ul id="subforums"></ul>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="sendMessageTo"></h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="form-control-label">Subject:</label>
+							<input type="text" class="form-control" id="subject">
+						</div>
+						<div class="form-group">
+							<label for="message-text" class="form-control-label">Message:</label>
+							<textarea rows="5" class="form-control" id="message-text"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" id="send" class="btn btn-primary">Send
+						message</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

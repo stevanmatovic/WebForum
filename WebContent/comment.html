@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="bootstrap/bootstrap1.css">
+
+<link rel="stylesheet" href="bootstrap/bootstrap1.css">
+
+<script type="text/javascript" src="bootstrap/bootstrap3.js"></script>
+
+<script type="text/javascript" src="js/cookie.js"></script>
+
+<script type="text/javascript" src="js/comment.js"></script>
+</head>
+<body>
+		
+	<div class="container">
+		<div class="page-header">
+  			<h2 id="heading"></h2>
+		</div>	
+
+		<div class="col-sm-6">
+			<h4 class="text-left" id="authorName"></h4>
+		</div>
+		<div class="pull-right">
+			<h4 id="date" class="text-right"></h4>
+		</div>
+		<div class="clearfix"></div>
+	
+		<div class="container-fluid">
+			<h3 class ="pull-left"><b id="likeCount"></b></h3>
+			<button type="button" id="dislike" class="btn btn-basic btn-lg pull-right">
+    			<span class="glyphicon glyphicon-thumbs-down"></span> Dislike
+  			</button>
+  			<button type="button" id="like" class="btn btn-basic btn-lg pull-right">
+    			<span class="glyphicon glyphicon-thumbs-up"></span> Like
+  			</button>
+		</div>
+		<div id="comments" class="container-fluid">
+			
+		</div>
+		<form action = "#" id="commentForm">
+			<div class="form-group">
+  				<label for="comment">Comment:</label>
+  				<textarea class="form-control" placeholder="Write your comment..." rows="5" id="comment"></textarea>
+  				<button type="submit" class="btn btn-primary pull-right">Comment</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

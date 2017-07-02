@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import ms.forum.database.DataBaseConnection;
 import ms.forum.model.User;
@@ -68,6 +70,40 @@ public class UserDao {
 
 	}
 
+	public List<User> searchByName(String userName) {
+    	String sql = "select * from user where username like ?";
+    	PreparedStatement p = null;
+		ResultSet rs = null;
+		try {
+			p = DataBaseConnection.getConnection()
+						.prepareStatement(sql);
+			p.setString(1, "%"+userName+"%");			
+			rs = p.executeQuery();
+			return this.processSelectAll(rs);
+		} catch (SQLException e) {
+			System.out.println(e.toString());
+		}
+		catch(Exception e){
+			System.out.println(e.toString());
+		}
+		finally {
+			DataBaseUtils.close(rs, p);
+		}
+    	return null;
+	}
+	
+	protected List processSelectAll(ResultSet rs) throws SQLException {
+		List list = new ArrayList();
+
+		while (rs.next()) {
+			User u = new User();
+			mapEntityFromResultSet(u, rs);
+			list.add(u);
+		}
+
+		return list;
+	}
+	
 	public User getByUsername(String username) {
 
 		String sql = "select * from USER where username=?";

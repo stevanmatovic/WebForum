@@ -40,7 +40,7 @@ $(document).ready(
 				contentType : 'application/json',
 				success : function(data) {
 					data.forEach(function(element) {
-							$( "#subforums" ).append( '<a class="list-group-item" href="/ms.forum/subforum.html?name=' + element.name +'">' + element.name + "</a>" );
+							$( "#subforums" ).append( '<a class="list-group-item" href="/ms.forum/subforum.html?name=' + element.id +'">' + element.name + "</a>" );
 						});
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {
